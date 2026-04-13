@@ -25,8 +25,14 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Enable web
+        run: flutter config --enable-web
+
+      - name: List files
+        run: ls -R
+
       - name: Build Web
-        run: flutter build web --base-href "/Mock-CET_LiveDemo/" --web-renderer auto
+        run: flutter build web --base-href=/Mock-CET_LiveDemo/ --release
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
