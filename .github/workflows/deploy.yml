@@ -3,7 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Set this to your default branch name
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -22,7 +26,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Web
-        run: flutter build web --base-href "/Mock-CET_LiveDemo/" --web-renderer html
+        run: flutter build web --base-href "/Mock-CET_LiveDemo/" --web-renderer auto
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
